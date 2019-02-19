@@ -11,8 +11,27 @@
 	</head>
 	<body>
 		<div class="container">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		        <span class="navbar-brand mb-0 h1">Jyoti CNC Book Read</span>
+		        <!-- <a class="navbar-brand" href="#"></a> -->
+		        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+		        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		          <div class="navbar-nav">
+		            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+		            <a class="nav-item nav-link" href="#">Guide</a>
+		            <a class="nav-item nav-link" href="#">Contact Us</a>
+		          </div>
+		        </div>
+		        <form class="form-inline">
+		          <input class="form-control mr-sm-2" type="search" placeholder="Search book name" aria-label="Search book name">
+		          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		          &nbsp;&nbsp;&nbsp;&nbsp;
+		          <button type="button" class="btn btn-outline-success my-2 my-sm-0">Log Out</button>
+		        </form>
+		    </nav>
+		    <br>
 			<div class="d-block p-2 bg-primary text-white"><h1 class="display-4">Hello, Admin</h1></div>
-			<br><br>
+			<br>
 			<div id="accordion">
 				<div class="card"><!-- Collapse Group 1 started-->
 					<div class="card-header" id="headingOne">
@@ -86,7 +105,28 @@
 							<!--Group 3 Data Ending-->
 						</div>
 					</div>
-				</div>
+				</div><!--Collapse group 3 Ended-->
+
+				<div class="card"><!--Collapse Gorup 4 Started -->
+					<div class="card-header" id="headingFour">
+						<h5 class="mb-0">
+							<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseTwo">Delete Book</button>
+						</h5>
+					</div>
+					<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+						<div class="card-body">
+							<!--Group 4 Data Started-->
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="inputEmail4">Book Name.</label>
+									<input type="text" class="form-control" id="inputEmail4" placeholder="Book You Want To Delete.">
+								</div>
+							</div>
+							<button type="button" class="btn btn-primary">Delete Book</button>
+							<!--Group 4 Data Ended-->
+						</div>
+					</div>
+				</div><!--Collapse group 4 ended-->
 			</div>
 			<!-- Optional JavaScript -->
 			<!-- jQuery first, then Popper.js, then Bootstrap JS -->
