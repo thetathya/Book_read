@@ -12,26 +12,23 @@
 	<body>
 		<div class="container">
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		        <span class="navbar-brand mb-0 h1">Jyoti CNC Book Read</span>
-		        <!-- <a class="navbar-brand" href="#"></a> -->
-		        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-		        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-		          <div class="navbar-nav">
-		            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-		            <a class="nav-item nav-link" href="#">Guide</a>
-		            <a class="nav-item nav-link" href="#">Contact Us</a>
-		          </div>
-		        </div>
-		        <form class="form-inline">
-		          <input class="form-control mr-sm-2" type="search" placeholder="Search book name" aria-label="Search book name">
-		          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-		          &nbsp;&nbsp;&nbsp;&nbsp;
-		          <button type="button" class="btn btn-outline-success my-2 my-sm-0">Log Out</button>
-		        </form>
-		    </nav>
-		    <br>
-			<div class="d-block p-2 bg-primary text-white"><h1 class="display-4">Hello, Admin</h1></div>
-			<br>
+				<span class="navbar-brand mb-0 h1">Jyoti CNC Book Read</span>
+				<!-- <a class="navbar-brand" href="#"></a> -->
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				  <div class="navbar-nav">
+					<a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+					<a class="nav-item nav-link" href="#">Guide</a>
+					<a class="nav-item nav-link" href="#">Contact Us</a>
+				  </div>
+				</div>
+				<form class="form-inline">
+				  <input class="form-control mr-sm-2" type="search" placeholder="Search book name" aria-label="Search book name">
+				  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				  &nbsp;&nbsp;&nbsp;&nbsp;
+				  <button type="button" class="btn btn-outline-success my-2 my-sm-0">Log Out</button>
+				</form>
+			</nav>
 			<div id="accordion">
 				<div class="card"><!-- Collapse Group 1 started-->
 					<div class="card-header" id="headingOne">
@@ -39,25 +36,25 @@
 							<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Add Employee</button>
 						</h5>
 					</div>
-					<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+					<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
 						<div class="card-body">
 							<form>
 								<div class="form-group row">
 									<div class="form-group col-md-6">
-										<label for="inputEmail4">Email</label>
-										<input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+										<label for="username">Username</label>
+										<input type="text" class="form-control" id="username" placeholder="Username">
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-group col-md-6">
-										<label for="inputPassword4">Password</label>
-										<input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+										<label for="password">Password</label>
+										<input type="password" class="form-control" id="password" placeholder="Password">
 									</div>
 								</div>
 								<div class="form-group row">
 									<div class="form-group col-md-6">
-										<label for="inputPassword4">Confirm Password</label>
-										<input type="password" class="form-control" id="inputPassword4" placeholder="Confirm Password">
+										<label for="confpassword">Confirm Password</label>
+										<input type="password" class="form-control" id="confpassword" placeholder="Confirm Password">
 									</div>
 								</div>
 								<button type="submit" class="btn btn-primary">Add</button>
@@ -76,8 +73,8 @@
 							<!--Group 2 Data Started-->
 							<div class="form-row">
 								<div class="form-group col-md-6">
-									<label for="inputEmail4">User ID.</label>
-									<input type="text" class="form-control" id="inputEmail4" placeholder="Provide ID of user you want to Delete">
+									<label for="username">Username.</label>
+									<input type="text" class="form-control" id="username" placeholder="Provide Username of user you want to Delete">
 								</div>
 							</div>
 							<button type="button" class="btn btn-primary">Delete Employee</button>
@@ -96,8 +93,8 @@
 							<!--Group 3 Data Starting-->
 							<div class="form-row">
 								<div class="form-group col-md-6">
-									<label for="inputEmail4">User ID.</label>
-									<input type="text" class="form-control" id="inputEmail4" placeholder="Provide ID of user you want to Analyze.">
+									<label for="username">Username.</label>
+									<input type="text" class="form-control" id="username" placeholder="Provide ID of user you want to Analyze.">
 								</div>
 							</div>
 							<button type="button" class="btn btn-primary">Show Stats</button>
@@ -118,8 +115,8 @@
 							<!--Group 4 Data Started-->
 							<div class="form-row">
 								<div class="form-group col-md-6">
-									<label for="inputEmail4">Book Name.</label>
-									<input type="text" class="form-control" id="inputEmail4" placeholder="Book You Want To Delete.">
+									<label for="bookid">Book ID.</label>
+									<input type="text" class="form-control" id="bookid" placeholder="ID of the Book You Want To Delete.">
 								</div>
 							</div>
 							<button type="button" class="btn btn-primary">Delete Book</button>
