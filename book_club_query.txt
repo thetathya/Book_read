@@ -1,0 +1,27 @@
+books_catelog table*
+
+CREATE TABLE `book_club`.`books_catelog` ( `book_id` INT NOT NULL AUTO_INCREMENT , `author` VARCHAR(50) NOT NULL , `genre` VARCHAR(25) NOT NULL , `book_data` VARBINARY(65000) NOT NULL , PRIMARY KEY (`book_id`)) ENGINE = MyISAM;
+
+book_instance*
+
+CREATE TABLE `book_club`.`book_instance` ( `bi_id` INT NOT NULL AUTO_INCREMENT , `book_id` INT(3) NOT NULL , `emp_id` INT(3) NOT NULL , `status` VARCHAR(15) NOT NULL , PRIMARY KEY (`bi_id`)) ENGINE = MyISAM;
+
+employees*
+
+CREATE TABLE `book_club`.`employees` ( `emp_id` INT NOT NULL AUTO_INCREMENT , `username` VARCHAR(30) NOT NULL , `password` TEXT NOT NULL , `name` VARCHAR(50) NOT NULL , PRIMARY KEY (`emp_id`)) ENGINE = MyISAM;
+
+administrator*
+
+CREATE TABLE `book_club`.`administrator` ( `admin_id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(50) NOT NULL , `username` VARCHAR(30) NOT NULL , `password` TEXT NOT NULL , PRIMARY KEY (`admin_id`)) ENGINE = MyISAM;
+
+scores*
+
+CREATE TABLE `book_club`.`scores` ( `s_id` INT NOT NULL AUTO_INCREMENT , `book_id` INT(3) NOT NULL , `emp_id` INT(3) NOT NULL , `test_score` INT(3) NOT NULL , PRIMARY KEY (`s_id`)) ENGINE = MyISAM;
+
+result*
+
+CREATE TABLE `book_club`.`result` ( `r_id` INT NOT NULL AUTO_INCREMENT , `emp_id` INT(3) NOT NULL , `book_read` INT(3) NOT NULL , `book_pending` INT(3) NOT NULL , `exams_completed` INT(3) NOT NULL , PRIMARY KEY (`r_id`)) ENGINE = MyISAM;
+
+test*
+
+CREATE TABLE `book_club`.`test` ( `t_id` INT NOT NULL AUTO_INCREMENT , `book_id` INT(3) NOT NULL , `question` VARCHAR(50) NOT NULL , `op_1` VARCHAR(50) NOT NULL , `op_2` VARCHAR(50) NOT NULL , `op_3` VARCHAR(50) NOT NULL , `op_4` VARCHAR(50) NOT NULL , `correct_op` VARCHAR(50) NOT NULL , PRIMARY KEY (`t_id`)) ENGINE = MyISAM;
