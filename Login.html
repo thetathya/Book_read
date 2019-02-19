@@ -1,3 +1,10 @@
+<?php
+session_start();
+$error_id = isset($_GET['err']) ? (int)$_GET['err'] : 0 ;
+if($error_id != 0 && $_GET['err']=='1'){
+	echo "invalid username or password";
+}
+?>
 <!doctype html>
 <html lang="en">
 	<head>
@@ -23,13 +30,13 @@
 				</div>
 			</nav>
 			<div class="center-signin">
-				<form class="form-signin">
+				<form class="form-signin" method="post" action="login_validate.php">
 					<div class="btn-group btn-group-toggle" data-toggle="buttons">
 						<label class="btn btn-secondary active">
-							<input type="radio" name="options" id="admin" autocomplete="off" checked>Admin
+							<input type="radio" name="options" value="administrator" autocomplete="off" checked>Admin
 						</label>
 						<label class="btn btn-secondary">
-							<input type="radio" name="options" id="employee" autocomplete="off">Employee
+							<input type="radio" name="options" value="employees" autocomplete="off">Employee
 						</label>
 					</div>
 					<div>
@@ -37,14 +44,15 @@
 					</div>
 					<br>
 					<div class="form-label-group">
-						<input type="text" id="inpuser" class="form-control" placeholder="Username" required autofocus>
+						<input type="text" name="user" class="form-control" placeholder="Username" required autofocus>
 						<label for="inpuser">Username</label>
 					</div>
 					<div class="form-label-group">
-						<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+						<input type="password" name="password" class="form-control" placeholder="Password" required>
 						<label for="inputPassword">Password</label>
 					</div>
-					<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+					
+					 <button class="btn btn-lg btn-primary btn-block">Sign in</button> 
 				</form>
 			</div>
 		</div>
