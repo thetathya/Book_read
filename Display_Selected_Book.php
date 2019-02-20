@@ -1,3 +1,24 @@
+<?php
+$conn = mysqli_connect('localhost', 'root', 'root', 'book_club');
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$query = "select title, summary,author,tags,type from books where bid = '12' ";
+$result = mysqli_query($conn, $query);
+
+
+	
+
+// echo "Connected successfully";
+
+
+
+
+?>
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -35,10 +56,36 @@
         </form>
       </nav>
 
-      <div class="alert alert-primary" role="alert">
-        <h2>Book Name</h2>
-        <p class="h4">Some Contents or Description of Book</p>
-      </div>
+      <?php
+      
+      if($result-> num_rows > 0) {
+        while($book = $result->fetch_assoc()) {
+          
+        $booksTitle = $book['title'];
+        $bookSummary = $book['summary'];
+        $booksAuthor = $book['author'];
+        $bookTags = $book['tags'];
+        $bookType = $book['type'];
+
+        
+        echo    '<div class="alert alert-primary" role="alert">
+              <h2>'.$booksTitle.'</h2>
+              <p class="h4">'.$booksAuthor.'</p>
+
+            </div>';
+        
+
+        }
+
+    }
+      
+      ?>
+      
+      
+          <!-- <div class="alert alert-primary" role="alert">
+            <h2>Book Name</h2>
+            <p class="h4">Some Contents or Description of Book</p>
+          </div> -->
 
 
 

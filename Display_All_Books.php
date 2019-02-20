@@ -1,3 +1,24 @@
+<?php
+$conn = mysqli_connect('localhost', 'root', 'root', 'book_club');
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$query = "select title, summary,author,tags,type from books";
+$result = mysqli_query($conn, $query);
+
+
+	
+
+// echo "Connected successfully";
+
+
+
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -35,20 +56,42 @@
 				<!--Card Layout Started-->
 				<!--Tile for Book 1 started-->
 				<div class="col-sm-6">
-					<div class="card text-center">
-						<div class="card-header">
-							Book
-						</div>
-						<div class="card-body">
-							<h5 class="card-title">Book Name</h5>
-							<p class="card-text">Small Description about Book. (Author Name / Edition)</p>
-							<a href="#" class="btn btn-primary">Read</a>
-							<a href="#" class="btn btn-primary">Give Exam</a>
-						</div>
-						<div class="card-footer text-muted">
-							2 days ago
-						</div>
-					</div>
+					
+				<?php
+					
+					
+					if($result-> num_rows > 0) {
+							while($book = $result->fetch_assoc()) {
+								
+							$booksTitle = $book['title'];
+							$bookSummary = $book['summary'];
+							$booksAuthor = $book['author'];
+							$bookTags = $book['tags'];
+							$bookType = $book['type'];
+		
+							
+							echo '<div class="card text-center">
+								<div class="card-header">
+									'.$bookType.'
+								</div>
+								<div class="card-body">
+									<h5 class="card-title">'.$booksTitle.'</h5>
+									<p class="card-text">'.$bookSummary.' (Author Name: '.$booksAuthor.' / '.$bookTags.')</p>
+									<a href="#" class="btn btn-primary">Read</a>
+									<a href="#" class="btn btn-primary">Give Exam</a>
+								</div>
+								<div class="card-footer text-muted">
+									2 days ago
+								</div>
+							</div>';
+
+							}
+
+					}
+					
+				
+				
+				?>
 				</div>
 				<!--Tile For Book 1 Ended-->
 				<!--Tile For Article 1 Started-->
