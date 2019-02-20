@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `book_instance` (
   `bi_id` int(11) NOT NULL AUTO_INCREMENT,
   `book_id` int(3) NOT NULL,
   `emp_id` int(3) NOT NULL,
-  `status` varchar(15) NOT NULL,
+  `status` int(3) NOT NULL DEAFULT '0',
   PRIMARY KEY (`bi_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
