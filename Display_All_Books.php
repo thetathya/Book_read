@@ -3,16 +3,20 @@ session_start();
 if(!isset($_SESSION['use'])) {
 	header("Location:login.php");
 }
+$emp_id = $_SESSION['emp_id'];
+$book_id;
 
 
-$conn = mysqli_connect('localhost', 'root', '', 'book_club');
+$conn = mysqli_connect("localhost", "root", "", "book_club");
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$query = "select title, summary,author,tags,type from books";
+$query = "select * from book_instance where emp_id = '$emp_id' ";
 $result = mysqli_query($conn, $query);
+
+
 
 
 	
@@ -43,8 +47,9 @@ $result = mysqli_query($conn, $query);
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 					<div class="navbar-nav">
-						<a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-						<a class="nav-item nav-link" href="#">Guide</a>
+						<a class="nav-item nav-link " href="profile.php">Profile <span class="sr-only">(current)</span></a>
+						<a class="nav-item nav-link active" href="Display_All_Book.php">View Books <span class="sr-only">(current)</span></a>
+						<a class="nav-item nav-link" href="PendingBook.php">My Books</a>
 						<a class="nav-item nav-link" href="#">Contact Us</a>
 					</div>
 				</div>
@@ -61,47 +66,61 @@ $result = mysqli_query($conn, $query);
 			<div class="row">
 				<!--Card Layout Started-->
 				<!--Tile for Book 1 started-->
-				<div class="col-sm-6">
+				
 					
 				<?php
 					
 					
 					if($result-> num_rows > 0) {
-							while($book = $result->fetch_assoc()) {
+						while($book = $result->fetch_assoc()) {
+							$book_id = $book['book_id'];
+							$stmt = "select * from books where bid = '$book_id' ";
+							$entries = mysqli_query($conn, $stmt);
+							while($empBook = $entries-> fetch_assoc()) {
+								$booksTitle = $empBook['title'];
+								$bookSummary = $empBook['summary'];
+								$booksAuthor = $empBook['author'];
+								$bookTags = $empBook['tags'];
+								$bookType = $empBook['type'];
+			
 								
-							$booksTitle = $book['title'];
-							$bookSummary = $book['summary'];
-							$booksAuthor = $book['author'];
-							$bookTags = $book['tags'];
-							$bookType = $book['type'];
-		
-							
-							echo '<div class="card text-center">
-								<div class="card-header">
-									'.$bookType.'
-								</div>
-								<div class="card-body">
-									<h5 class="card-title">'.$booksTitle.'</h5>
-									<p class="card-text">'.$bookSummary.' (Author Name: '.$booksAuthor.' / '.$bookTags.')</p>
-									<a href="#" class="btn btn-primary">Read</a>
-									<a href="#" class="btn btn-primary">Give Exam</a>
-								</div>
-								<div class="card-footer text-muted">
-									2 days ago
-								</div>
-							</div>';
+								echo '<div class="col-sm-6">
+								<div class="card text-center">
+									<div class="card-header">
+										'.$bookType.'
+									</div>
+									<div class="card-body">
+										<h5 class="card-title">'.$booksTitle.'</h5>
+										<p class="card-text">'.$bookSummary.' (Author Name: '.$booksAuthor.' / '.$bookTags.')</p>
+										<a href="#" class="btn btn-primary">Read</a>
+										<a href="#" class="btn btn-primary">Give Exam</a>
+									</div>
+									<div class="card-footer text-muted">
+										2 days ago
+									</div>
+								</div></div>';
+	
+								}
+						}
 
-							}
+						}
+						
+						else {
+							echo "No Books Found";
+						}
+					
+					
 
-					}
+						
+					
 					
 				
 				
 				?>
-				</div>
+				
 				<!--Tile For Book 1 Ended-->
 				<!--Tile For Article 1 Started-->
-				<div class="col-sm-6">
+				<!-- <div class="col-sm-6">
 					<div class="card">
 						<div class="card text-center">
 							<div class="card-header">
@@ -117,7 +136,7 @@ $result = mysqli_query($conn, $query);
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!--Tile For Article 1 Ended-->
 				<!--Add further tiles of book/article between this comments from here-->
 				<!--to here.-->
