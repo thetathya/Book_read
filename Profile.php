@@ -1,3 +1,46 @@
+<?php
+session_start();
+if(!isset($_SESSION['use'])) {
+	header("Location:login.php");
+}
+$emp_id = $_SESSION['emp_id'];
+$book_id;
+$name;
+
+$conn = mysqli_connect("localhost", "root", "", "book_club");
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$query = "select * from employees where emp_id = '$emp_id' ";
+$result = mysqli_query($conn, $query);
+
+if ($result->num_rows > 0) {
+	
+	
+	while($emp = $result->fetch_assoc()) {
+		$name = $emp['name'];
+		
+		
+	}
+
+}
+
+
+
+	
+
+// echo "Connected successfully";
+
+
+
+
+?>
+
+
+
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -10,9 +53,30 @@
 	</head>
 	<body>
 		<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+				<span class="navbar-brand mb-0 h1">Jyoti CNC Book Read</span>
+				<!-- <a class="navbar-brand" href="#"></a> -->
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav">
+						<a class="nav-item nav-link active" href="profile.php">Profile <span class="sr-only">(current)</span></a>
+						<a class="nav-item nav-link " href="Display_All_Books.php">View Books</a>
+						<a class="nav-item nav-link" href="Pending_Book.html">My Books</a>
+						<a class="nav-item nav-link" href="#">Contact Us</a>
+					</div>
+				</div>
+				<form class="form-inline"  action="logout.php">
+					<input class="form-control mr-sm-2" type="search" placeholder="Search book name" aria-label="Search book name">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<button href="logout.php" class="btn btn-outline-success my-2 my-sm-0" >Log Out</button>
+				</form>
+			</nav>
 			<div class="card">
 				<div class="card-header">
-					Hey, Username
+					<?php
+					echo "Welcome, ".$name;
+					?>
 				</div>
 				<div class="row">
 					<div class="col">

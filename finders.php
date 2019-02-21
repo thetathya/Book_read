@@ -1,6 +1,6 @@
 <?php
 
-    $empId = '11';
+    
     function getEmpData($empId) {
         $employee;
         $conn = mysqli_connect('localhost', 'root', '', 'book_club');
@@ -47,8 +47,7 @@
     return $employee;
     }
 
-    $data = getBookData($bookId);
-    echo $data['summary'];
+    
     
 
 
