@@ -1,12 +1,19 @@
 <?php
+session_start();
 $conn = mysqli_connect('localhost', 'root', '', 'book_club');
+$emp_id = $_SESSION['emp_id'];
+$book_id;
+
+
+$conn = mysqli_connect("localhost", "root", "", "book_club");
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$query = "select * from book_instance";
+$query = "select * from book_instance where emp_id = '$emp_id' ";
 $result = mysqli_query($conn, $query);
+
 
 
 	
@@ -31,44 +38,81 @@ $result = mysqli_query($conn, $query);
 	<title>Test Info</title>
 </head>
 <body>
-	<div class="container">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+				<span class="navbar-brand mb-0 h1"><a href="http://jyoti.co.in/" target="_blank" style="color: inherit">Jyoti CNC Book Read</a></span>
+				<!-- <a class="navbar-brand" href="#"></a> -->
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				  <div class="navbar-nav">
+				  	<a class="nav-item nav-link " href="profile.php">Profile <span class="sr-only">(current)</span></a>
+				 	<a class="nav-item nav-link" href="Display_All_Books.php">View Books <span class="sr-only">(current)</span></a>
+					<a class="nav-item nav-link active" href="PendingBook.php">My Books</a>
+					<a class="nav-item nav-link" href="#">Contact Us</a>
+				  </div>
+				</div>
+				<form class="form-inline"  action="logout.php">
+				  <input class="form-control mr-sm-2" type="search" placeholder="Search book name" aria-label="Search book name">
+				  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				  &nbsp;&nbsp;&nbsp;&nbsp;
+				  <button  class="btn btn-outline-success my-2 my-sm-0"> Log Out</button>
+				</form>
+			</nav>	
+<div class="container">
 		<div class="list-group">
 			
 		<?php
 			if($result-> num_rows > 0) {
-				while($book = $result-> fetch_assoc()) {
-					if($book['status'] == 0) {
-						echo	'<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-								<div class="d-flex w-100 justify-content-between">
-									<h5 class="mb-1">Book heading</h5>
-									<small class="text-muted">7 days ago</small>
-								</div>
-								<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-								<span class="badge badge-primary badge-pill">Reading</span>
-							</a>';
-						}
-						elseif ($book['status'] == 1) {
-						echo	'<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+				while($book = $result->fetch_assoc()) {
+					$book_id = $book['book_id'];
+					$book_status = $book['status'];
+					$stmt = "select * from books where bid = '$book_id' ";
+					$entries = mysqli_query($conn, $stmt);
+					while($empBook = $entries-> fetch_assoc()) {
+						$booksTitle = $empBook['title'];
+						$bookSummary = $empBook['summary'];
+						$booksAuthor = $empBook['author'];
+						$bookTags = $empBook['tags'];
+						$bookType = $empBook['type'];
+	
+						if($book_status == 0) {
+							echo	'<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
 									<div class="d-flex w-100 justify-content-between">
-										<h5 class="mb-1">Article heading</h5>
-										<small class="text-muted">5 days ago</small>
+										<h5 class="mb-1">'.$booksTitle.'</h5>
+										<small class="text-muted">7 days ago</small>
 									</div>
-									<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-									<span class="badge badge-warning badge-pill">Test Pending</span>
+									<p class="mb-1">'.$bookSummary.'</p>
+									<span class="badge badge-primary badge-pill">Reading</span>
 								</a>';
-						}
-						else {
-						echo	'<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-								<div class="d-flex w-100 justify-content-between">
-									<h5 class="mb-1">Book heading</h5>
-									<small>3 days ago</small>
-								</div>
-								<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-								<span class="badge badge-success badge-pill">Test Completed</span>
-							</a>';
+							}
+							elseif ($book_status == 1) {
+							echo	'<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+										<div class="d-flex w-100 justify-content-between">
+											<h5 class="mb-1">'.$booksTitle.'</h5>
+											<small class="text-muted">5 days ago</small>
+										</div>
+										<p class="mb-1">'.$bookSummary.'</p>
+										<span class="badge badge-warning badge-pill">Test Pending</span>
+									</a>';
+							}
+							else {
+							echo	'<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+									<div class="d-flex w-100 justify-content-between">
+										<h5 class="mb-1">'.$booksTitle.'</h5>
+										<small>3 days ago</small>
+									</div>
+									<p class="mb-1">'.$bookSummary.'</p>
+									<span class="badge badge-success badge-pill">Test Completed</span>
+								</a>';
+							}
+						
+
 						}
 				}
-			}
+
+				}
+			
+			
+			
 		
 		
 		

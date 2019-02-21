@@ -49,7 +49,7 @@ $result = mysqli_query($conn, $query);
 					<div class="navbar-nav">
 						<a class="nav-item nav-link " href="profile.php">Profile <span class="sr-only">(current)</span></a>
 						<a class="nav-item nav-link active" href="Display_All_Book.php">View Books <span class="sr-only">(current)</span></a>
-						<a class="nav-item nav-link" href="Pending_Book.html">My Books</a>
+						<a class="nav-item nav-link" href="PendingBook.php">My Books</a>
 						<a class="nav-item nav-link" href="#">Contact Us</a>
 					</div>
 				</div>

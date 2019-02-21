@@ -28,9 +28,6 @@ if ($result->num_rows > 0) {
 }
 
 
-
-	
-
 // echo "Connected successfully";
 
 
@@ -61,7 +58,7 @@ if ($result->num_rows > 0) {
 					<div class="navbar-nav">
 						<a class="nav-item nav-link active" href="profile.php">Profile <span class="sr-only">(current)</span></a>
 						<a class="nav-item nav-link " href="Display_All_Books.php">View Books</a>
-						<a class="nav-item nav-link" href="Pending_Book.html">My Books</a>
+						<a class="nav-item nav-link" href="PendingBook.php">My Books</a>
 						<a class="nav-item nav-link" href="#">Contact Us</a>
 					</div>
 				</div>
@@ -80,7 +77,7 @@ if ($result->num_rows > 0) {
 				</div>
 				<div class="row">
 					<div class="col">
-						<button type="button" style="width: 100%;" class="btn btn-lg btn-primary">Change Password</button>
+						<button  style="width: 100%;" class="btn btn-lg btn-primary">Change Password</button>
 					</div>
 					<div class="col">
 						<button type="button" style="width: 100%;" class="btn btn-lg btn-primary mb-6">Test Results(History)</button>
