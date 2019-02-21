@@ -1,5 +1,11 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', 'root', 'book_club');
+session_start();
+if(!isset($_SESSION['use'])) {
+	header("Location:login.php");
+}
+
+
+$conn = mysqli_connect('localhost', 'root', '', 'book_club');
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
@@ -46,7 +52,7 @@ $result = mysqli_query($conn, $query);
 					<input class="form-control mr-sm-2" type="search" placeholder="Search book name" aria-label="Search book name">
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 					&nbsp;&nbsp;&nbsp;&nbsp;
-					<button  class="btn btn-outline-success my-2 my-sm-0" >Log Out</button>
+					<button href="logout.php" class="btn btn-outline-success my-2 my-sm-0" >Log Out</button>
 				</form>
 			</nav>
 			<div class="alert alert-success" role="alert" align="center">
