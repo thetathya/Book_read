@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', 'root', 'book_club');
+$conn = mysqli_connect("localhost", "root", "", "book_club");
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
@@ -43,8 +43,8 @@ $result = mysqli_query($conn, $query);
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Guide</a>
+            <a class="nav-item nav-link active" href="Display_All_Book.php">View Books <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" href="Pending_Book.html">My Books</a>
             <a class="nav-item nav-link" href="#">Contact Us</a>
           </div>
         </div>
@@ -71,7 +71,7 @@ $result = mysqli_query($conn, $query);
         echo    '<div class="alert alert-primary" role="alert">
               <h2>'.$booksTitle.'</h2>
               <p class="h4">'.$booksAuthor.'</p>
-
+				<a href="Test.php" class="btn btn-primary">Give Test</a>
             </div>';
         
 
