@@ -122,7 +122,7 @@ if(isset($_POST['login'])) {
 						<span id="length" class="invalid">Minimum <b>8 characters</b></span>
 					</div>
 
-					 <button type="submit" value="Submit" class="btn btn-lg btn-primary btn-block">Sign in</button> 
+					 <input type="submit" value="Submit" name="login" class="btn btn-lg btn-primary btn-block"> 
 				</form>
 			</div>
 		</div>
