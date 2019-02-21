@@ -1,3 +1,24 @@
+<?php
+$conn = mysqli_connect('localhost', 'root', '', 'book_club');
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$query = "select * from book_instance";
+$result = mysqli_query($conn, $query);
+
+
+	
+
+// echo "Connected successfully";
+
+
+
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -12,7 +33,53 @@
 <body>
 	<div class="container">
 		<div class="list-group">
-			<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+			
+		<?php
+			if($result-> num_rows > 0) {
+				while($book = $result-> fetch_assoc()) {
+					if($book['status'] == 0) {
+						echo	'<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+								<div class="d-flex w-100 justify-content-between">
+									<h5 class="mb-1">Book heading</h5>
+									<small class="text-muted">7 days ago</small>
+								</div>
+								<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+								<span class="badge badge-primary badge-pill">Reading</span>
+							</a>';
+						}
+						elseif ($book['status'] == 1) {
+						echo	'<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+									<div class="d-flex w-100 justify-content-between">
+										<h5 class="mb-1">Article heading</h5>
+										<small class="text-muted">5 days ago</small>
+									</div>
+									<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+									<span class="badge badge-warning badge-pill">Test Pending</span>
+								</a>';
+						}
+						else {
+						echo	'<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+								<div class="d-flex w-100 justify-content-between">
+									<h5 class="mb-1">Book heading</h5>
+									<small>3 days ago</small>
+								</div>
+								<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+								<span class="badge badge-success badge-pill">Test Completed</span>
+							</a>';
+						}
+				}
+			}
+		
+		
+		
+		
+		
+		?>
+		
+		
+		
+		
+		<!-- <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
 				<div class="d-flex w-100 justify-content-between">
 					<h5 class="mb-1">Book heading</h5>
 					<small>3 days ago</small>
@@ -35,7 +102,7 @@
 				</div>
 				<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
 				<span class="badge badge-primary badge-pill">Reading</span>
-			</a>
+			</a> -->
 		</div>
 	</div>
 	<!-- Optional JavaScript -->
