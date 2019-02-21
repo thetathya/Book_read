@@ -7,7 +7,7 @@ $emp_id = $_SESSION['emp_id'];
 $book_id;
 
 
-$conn = mysqli_connect('localhost', 'root', '', 'book_club');
+$conn = mysqli_connect("localhost", "root", "", "book_club");
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
@@ -47,8 +47,8 @@ $result = mysqli_query($conn, $query);
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 					<div class="navbar-nav">
-						<a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-						<a class="nav-item nav-link" href="#">Guide</a>
+						<a class="nav-item nav-link active" href="Display_All_Book.php">View Books <span class="sr-only">(current)</span></a>
+						<a class="nav-item nav-link active" href="Pending_Book.html">My Books</a>
 						<a class="nav-item nav-link" href="#">Contact Us</a>
 					</div>
 				</div>
@@ -83,6 +83,7 @@ $result = mysqli_query($conn, $query);
 								$bookType = $empBook['type'];
 			
 								
+<<<<<<< HEAD
 								echo '<div class="col-sm-6">
 								<div class="card text-center">
 									<div class="card-header">
@@ -110,6 +111,33 @@ $result = mysqli_query($conn, $query);
 					
 					
 					
+=======
+							$booksTitle = $book['title'];
+							$bookSummary = $book['summary'];
+							$booksAuthor = $book['author'];
+							$bookTags = $book['tags'];
+							$bookType = $book['type'];
+		
+							
+							echo '<div class="card text-center">
+								<div class="card-header">
+									'.$bookType.'
+								</div>
+								<div class="card-body">
+									<h5 class="card-title">'.$booksTitle.'</h5>
+									<p class="card-text">'.$bookSummary.' (Author Name: '.$booksAuthor.' / '.$bookTags.')</p>
+									<a href="Display_Selected_Book.php" class="btn btn-primary">Read</a>'
+									/*.<a href="#" class="btn btn-primary">Give Exam</a>.*/'
+								</div>
+								<div class="card-footer text-muted">
+									2 days ago
+								</div>
+							</div>';
+
+							}
+
+					}
+>>>>>>> 51e176594bdd1ad6aba49fd39eaf577499d43b3e
 					
 				
 				
