@@ -4,7 +4,7 @@ $username = 'Talmeez';
 $password = '12345';
 
 if(isset($_SESSION['use'])) {
-	header("Location: home.php");
+	header("Location: Display_All_Books.php");
 }
 if(isset($_POST['login'])) {
 	if($username == $_POST['username'] && $password == $_POST['password']) {
