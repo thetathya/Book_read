@@ -82,7 +82,6 @@ if(isset($_POST['login'])) {
 						<input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
 						<label for="inputPassword">Password</label>
 					</div>
-<<<<<<< HEAD
 					
 					<div id="message" class="invalid">
 						<!-- <span id="displaymessage" color="black">Password must contain the following:</span><br> -->
@@ -93,9 +92,6 @@ if(isset($_POST['login'])) {
 					</div>
 
 					 <input type="submit" value="Submit" name="login" class="btn btn-lg btn-primary btn-block"> 
-=======
-					 <button type="submit" value="Submit" class="btn btn-lg btn-primary btn-block">Sign in</button> 
->>>>>>> d65373c59425e4e44122c6db90cb2ac359387722
 				</form>
 			</div>
 		</div>
