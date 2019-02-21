@@ -45,38 +45,7 @@ if(isset($_POST['login'])) {
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-		<title>Log In Page</title>
-
-		<style>
-				/* Style all input fields */
-				
-				
-				/* The message box is shown when the user clicks on the password field */
-				#message {
-					display:none;
-					background: #f1f1f1;
-					color: #000;
-					position: relative;
-					padding: 20px;
-					margin-top: 10px;
-					font-size: 12px;
-				}			
-				
-				/* Add a green text color and a checkmark when the requirements are right */
-				.valid {
-				  color: green;
-				  display: none;
-				  margin-top: 0%;
-				  padding: 0%;
-				}
-				
-				/* Add a red text color and an "x" when the requirements are wrong */
-				.invalid {
-				  color: red;
-				}
-				
-				</style>
-				
+		<title>Log In Page</title>	
 
 	</head>
 	<body>
@@ -113,6 +82,7 @@ if(isset($_POST['login'])) {
 						<input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
 						<label for="inputPassword">Password</label>
 					</div>
+<<<<<<< HEAD
 					
 					<div id="message" class="invalid">
 						<!-- <span id="displaymessage" color="black">Password must contain the following:</span><br> -->
@@ -123,6 +93,9 @@ if(isset($_POST['login'])) {
 					</div>
 
 					 <input type="submit" value="Submit" name="login" class="btn btn-lg btn-primary btn-block"> 
+=======
+					 <button type="submit" value="Submit" class="btn btn-lg btn-primary btn-block">Sign in</button> 
+>>>>>>> d65373c59425e4e44122c6db90cb2ac359387722
 				</form>
 			</div>
 		</div>
@@ -132,89 +105,5 @@ if(isset($_POST['login'])) {
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-		<script>
-			var myInput = document.getElementById("password");
-			var letter = document.getElementById("letter");
-			var capital = document.getElementById("capital");
-			var number = document.getElementById("number");
-			var length = document.getElementById("length");
-			var displaymessage = document.getElementById("message");
-
-			// When the user clicks on the password field, show the message box
-			myInput.onfocus = function() {
-			document.getElementById("message").style.display = "block";
-			}
-
-			// When the user clicks outside of the password field, hide the message box
-			myInput.onblur = function() {
-			document.getElementById("message").style.display = "none";
-			}
-
-			// When the user starts to type something inside the password field
-			myInput.onkeyup = function() {
-			// Validate lowercase letters
-			var lowerCaseLetters = /[a-z]/g;
-			if(myInput.value.match(lowerCaseLetters)) {  
-				letter.classList.remove("invalid");
-				letter.classList.add("valid");
-				displaymessage.classList.remove("invalid");
-				displaymessage.classList.add("valid");
-			} else {
-				letter.classList.remove("valid");
-				letter.classList.add("invalid");
-				displaymessage.classList.remove("valid");
-				displaymessage.classList.add("invalid");
-			}
-			
-			// Validate capital letters
-			var upperCaseLetters = /[A-Z]/g;
-			if(myInput.value.match(upperCaseLetters)) {  
-				capital.classList.remove("invalid");
-				capital.classList.add("valid");
-				displaymessage.classList.remove("invalid");
-				displaymessage.classList.add("valid");
-			} else {
-				capital.classList.remove("valid");
-				capital.classList.add("invalid");
-				displaymessage.classList.remove("valid");
-				displaymessage.classList.add("invalid");
-			}
-
-			// Validate numbers
-			var numbers = /[0-9]/g;
-			if(myInput.value.match(numbers)) {  
-				number.classList.remove("invalid");
-				number.classList.add("valid");
-				displaymessage.classList.remove("invalid");
-				displaymessage.classList.add("valid");				
-			} else {
-				number.classList.remove("valid");
-				number.classList.add("invalid");
-				displaymessage.classList.remove("valid");
-				displaymessage.classList.add("invalid");
-			}
-			
-			// Validate length
-			if(myInput.value.length >= 8) {
-				length.classList.remove("invalid");
-				length.classList.add("valid");
-				displaymessage.classList.remove("invalid");
-				displaymessage.classList.add("valid");
-			} else {
-				length.classList.remove("valid");
-				length.classList.add("invalid");
-				displaymessage.classList.remove("valid");
-				displaymessage.classList.add("invalid");
-			}
-			if((document.getElementById("letter").style.display &&
-			document.getElementById("letter").style.display &&
-			document.getElementById("letter").style.display &&
-			document.getElementById("letter").style.display ) == "none"){
-				document.getElementById("message").style.display = none;
-			}
-			console.log(document.getElementById("letter").style.display);
-
-			}
-		</script>
 	</body>
 </html>
