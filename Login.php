@@ -1,8 +1,19 @@
 <?php
 session_start();
-$error_id = isset($_GET['err']) ? (int)$_GET['err'] : 0 ;
-if($error_id != 0 && $_GET['err']=='1'){
-	echo "invalid username or password";
+$username = 'Talmeez';
+$password = '12345';
+
+if(isset($_SESSION['use'])) {
+	header("Location: home.php");
+}
+if(isset($_POST['login'])) {
+	if($username == $_POST['username'] && $password == $_POST['password']) {
+		$_SESSION['use'] = $username;
+		echo '<script type="text/javascript"> window.open("Display_All_Books.php","_self");</script>';
+	  }
+	  else {
+		echo 'Invalid Credentials';
+	  }
 }
 ?>
 <!doctype html>
@@ -30,7 +41,7 @@ if($error_id != 0 && $_GET['err']=='1'){
 				</div>
 			</nav>
 			<div class="center-signin">
-				<form class="form-signin" method="post" action="login_validate.php">
+				<form class="form-signin" method="post" action="">
 					<div class="btn-group btn-group-toggle" data-toggle="buttons">
 						<label class="btn btn-secondary active">
 							<input type="radio" name="options" value="administrator" autocomplete="off" checked>Admin
@@ -44,7 +55,7 @@ if($error_id != 0 && $_GET['err']=='1'){
 					</div>
 					<br>
 					<div class="form-label-group">
-						<input type="text" name="user" class="form-control" placeholder="Username" required autofocus>
+						<input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
 						<label for="inpuser">Username</label>
 					</div>
 					<div class="form-label-group">
@@ -52,7 +63,7 @@ if($error_id != 0 && $_GET['err']=='1'){
 						<label for="inputPassword">Password</label>
 					</div>
 					
-					 <button class="btn btn-lg btn-primary btn-block">Sign in</button> 
+					<input type="submit" name="login" value="LOGIN" class="btn btn-lg btn-primary btn-block"> 
 				</form>
 			</div>
 		</div>
