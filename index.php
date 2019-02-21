@@ -1,19 +1,38 @@
 <?php
 session_start();
-$username = 'Talmeez';
-$password = '12345';
+$username;
+$password;
+
+$conn = mysqli_connect('localhost', 'root', '', 'book_club');
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 
 if(isset($_SESSION['use'])) {
 	header("Location: Display_All_Books.php");
 }
 if(isset($_POST['login'])) {
-	if($username == $_POST['username'] && $password == $_POST['password']) {
+	$username = $_POST['username'];
+	$password = $_POST['password'];
+	$query = "select * from employees where username = '$username' and password = '$password' ";
+	$result = mysqli_query($conn, $query);
+
+	
+
+	if ($result->num_rows > 0) {
 		$_SESSION['use'] = $username;
-		echo '<script type="text/javascript"> window.open("Display_All_Books.php","_self");</script>';
-	  }
-	  else {
-		echo 'Invalid Credentials';
-	  }
+		header("Location: Display_All_Books.php");
+		while($emp = $result->fetch_assoc()) {
+			$_SESSION['emp_id'] = $emp['emp_id'];
+			
+		}
+	
+	}
+	
+	else {
+		echo "Invalid Credentials.";
+	}
 }
 ?>
 <!doctype html>
@@ -103,7 +122,7 @@ if(isset($_POST['login'])) {
 						<span id="length" class="invalid">Minimum <b>8 characters</b></span>
 					</div>
 
-					 <button type="submit" value="Submit" class="btn btn-lg btn-primary btn-block">Sign in</button> 
+					 <input type="submit" value="Submit" name="login" class="btn btn-lg btn-primary btn-block"> 
 				</form>
 			</div>
 		</div>

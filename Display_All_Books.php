@@ -83,7 +83,6 @@ $result = mysqli_query($conn, $query);
 								$bookType = $empBook['type'];
 			
 								
-<<<<<<< HEAD
 								echo '<div class="col-sm-6">
 								<div class="card text-center">
 									<div class="card-header">
@@ -111,33 +110,6 @@ $result = mysqli_query($conn, $query);
 					
 					
 					
-=======
-							$booksTitle = $book['title'];
-							$bookSummary = $book['summary'];
-							$booksAuthor = $book['author'];
-							$bookTags = $book['tags'];
-							$bookType = $book['type'];
-		
-							
-							echo '<div class="card text-center">
-								<div class="card-header">
-									'.$bookType.'
-								</div>
-								<div class="card-body">
-									<h5 class="card-title">'.$booksTitle.'</h5>
-									<p class="card-text">'.$bookSummary.' (Author Name: '.$booksAuthor.' / '.$bookTags.')</p>
-									<a href="Display_Selected_Book.php" class="btn btn-primary">Read</a>'
-									/*.<a href="#" class="btn btn-primary">Give Exam</a>.*/'
-								</div>
-								<div class="card-footer text-muted">
-									2 days ago
-								</div>
-							</div>';
-
-							}
-
-					}
->>>>>>> 51e176594bdd1ad6aba49fd39eaf577499d43b3e
 					
 				
 				
