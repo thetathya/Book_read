@@ -1,1 +1,8 @@
-# Don't mess with starter template just copy all the code from it and paste in your work file.
+# Few hours to go. HACKATHON!
+#Would have not been possible without you guys:
+##Talmeez
+##Arka
+##Yash
+##Virag
+##Preyash
+##Tathya
