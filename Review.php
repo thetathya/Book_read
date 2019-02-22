@@ -4,7 +4,7 @@ if(!isset($_SESSION['use'])) {
 	header("Location:login.php");
 }
 $emp_id = $_SESSION['emp_id'];
-$book_id = 23;
+$book_id = 14;
 
 
 $conn = mysqli_connect("localhost", "root", "", "book_club");
@@ -14,7 +14,7 @@ if (!$conn) {
 }
 
 if(isset($_POST['submit'])) {
-	$ratings = $_POST['rating'];
+	$ratings = (int)$_POST['rating'];
 	$review = $_POST['review'];
 	$moral = $_POST['moral'];
 

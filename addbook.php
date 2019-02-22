@@ -14,7 +14,7 @@ $con = mysqli_connect("localhost","root","","book_club");
 $sql="INSERT INTO books (title,summary,author,tags,type,content,e_ques) VALUES ('$title','$summary','$author','$tags','$type','$text','$eval_question')";
 
 if (mysqli_query($con, $sql)) {
-	header("location:http://localhost/Book_read/Display_All_Books.html");
+	header("location: Display_All_Books.php");
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($con);
 }
