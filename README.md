@@ -2,5 +2,7 @@
 #Would have not been possible without you guys:
 ##Talmeez
 ##Arka
-##Poppy
-##Tathya Thaker
+##Yash
+##Virag
+##Preyash
+##Tathya
