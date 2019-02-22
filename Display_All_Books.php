@@ -93,7 +93,7 @@ $result = mysqli_query($conn, $query);
 										<h5 class="card-title">'.$booksTitle.'</h5>
 										<p class="card-text">'.$bookSummary.' (Author Name: '.$booksAuthor.' / '.$bookTags.')</p>
 										<a href="#" class="btn btn-primary">Read</a>
-										<a href="#" class="btn btn-primary">Give Exam</a>
+										<a href="Review.php?book_id='.$book_id.'" class="btn btn-primary">Reviews</a>
 									</div>
 									<div class="card-footer text-muted">
 										2 days ago
